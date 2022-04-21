@@ -54,6 +54,75 @@ export class Body {
         wasm.__wbg_body_free(ptr);
     }
     /**
+    */
+    get r() {
+        var ret = wasm.__wbg_get_body_r(this.ptr);
+        return ret;
+    }
+    /**
+    * @param {number} arg0
+    */
+    set r(arg0) {
+        wasm.__wbg_set_body_r(this.ptr, arg0);
+    }
+    /**
+    */
+    get m() {
+        var ret = wasm.__wbg_get_body_m(this.ptr);
+        return ret;
+    }
+    /**
+    * @param {number} arg0
+    */
+    set m(arg0) {
+        wasm.__wbg_set_body_m(this.ptr, arg0);
+    }
+    /**
+    */
+    get x() {
+        var ret = wasm.__wbg_get_body_x(this.ptr);
+        return Vec3f.__wrap(ret);
+    }
+    /**
+    * @param {Vec3f} arg0
+    */
+    set x(arg0) {
+        _assertClass(arg0, Vec3f);
+        var ptr0 = arg0.ptr;
+        arg0.ptr = 0;
+        wasm.__wbg_set_body_x(this.ptr, ptr0);
+    }
+    /**
+    */
+    get v() {
+        var ret = wasm.__wbg_get_body_v(this.ptr);
+        return Vec3f.__wrap(ret);
+    }
+    /**
+    * @param {Vec3f} arg0
+    */
+    set v(arg0) {
+        _assertClass(arg0, Vec3f);
+        var ptr0 = arg0.ptr;
+        arg0.ptr = 0;
+        wasm.__wbg_set_body_v(this.ptr, ptr0);
+    }
+    /**
+    */
+    get a() {
+        var ret = wasm.__wbg_get_body_a(this.ptr);
+        return Vec3f.__wrap(ret);
+    }
+    /**
+    * @param {Vec3f} arg0
+    */
+    set a(arg0) {
+        _assertClass(arg0, Vec3f);
+        var ptr0 = arg0.ptr;
+        arg0.ptr = 0;
+        wasm.__wbg_set_body_a(this.ptr, ptr0);
+    }
+    /**
     * @param {Vec3f} pos
     * @param {Vec3f} vel
     * @param {number} rad
@@ -71,6 +140,71 @@ export class Body {
         return Body.__wrap(ret);
     }
     /**
+    * @returns {number}
+    */
+    kinetic_energy() {
+        var ret = wasm.body_kinetic_energy(this.ptr);
+        return ret;
+    }
+    /**
+    * @param {Body} b
+    * @returns {number}
+    */
+    potential_energy(b) {
+        _assertClass(b, Body);
+        var ret = wasm.body_potential_energy(this.ptr, b.ptr);
+        return ret;
+    }
+    /**
+    * @param {Body} b1
+    * @param {Body} b2
+    * @returns {Vec3f}
+    */
+    static gravity(b1, b2) {
+        _assertClass(b1, Body);
+        _assertClass(b2, Body);
+        var ret = wasm.body_gravity(b1.ptr, b2.ptr);
+        return Vec3f.__wrap(ret);
+    }
+    /**
+    * @param {Body} b1
+    * @returns {boolean}
+    */
+    collide(b1) {
+        _assertClass(b1, Body);
+        var ret = wasm.body_collide(this.ptr, b1.ptr);
+        return ret !== 0;
+    }
+    /**
+    * @param {Body} b1
+    * @returns {Body}
+    */
+    merge(b1) {
+        _assertClass(b1, Body);
+        var ret = wasm.body_merge(this.ptr, b1.ptr);
+        return Body.__wrap(ret);
+    }
+    /**
+    * @param {Body} b1
+    * @returns {Vec3f}
+    */
+    bounce(b1) {
+        _assertClass(b1, Body);
+        var ret = wasm.body_bounce(this.ptr, b1.ptr);
+        return Vec3f.__wrap(ret);
+    }
+    /**
+    * @param {Vec3f} target
+    * @returns {number}
+    */
+    dist(target) {
+        _assertClass(target, Vec3f);
+        var ptr0 = target.ptr;
+        target.ptr = 0;
+        var ret = wasm.body_dist(this.ptr, ptr0);
+        return ret;
+    }
+    /**
     * @returns {Body}
     */
     static default() {
@@ -82,6 +216,15 @@ export class Body {
     */
     update(dt) {
         wasm.body_update(this.ptr, dt);
+    }
+    /**
+    * @param {Vec3f} f
+    */
+    force(f) {
+        _assertClass(f, Vec3f);
+        var ptr0 = f.ptr;
+        f.ptr = 0;
+        wasm.body_force(this.ptr, ptr0);
     }
 }
 /**
@@ -122,6 +265,20 @@ export class Instance {
         march_vec.ptr = 0;
         var ret = wasm.instance_new(ptr0, ptr1, wipe_height, time_scale);
         return Instance.__wrap(ret);
+    }
+    /**
+    * @returns {number}
+    */
+    kinetic_energy() {
+        var ret = wasm.instance_kinetic_energy(this.ptr);
+        return ret;
+    }
+    /**
+    * @returns {number}
+    */
+    potential_energy() {
+        var ret = wasm.instance_potential_energy(this.ptr);
+        return ret;
     }
     /**
     */
@@ -176,6 +333,49 @@ export class Vec3f {
         wasm.__wbg_vec3f_free(ptr);
     }
     /**
+    */
+    get x() {
+        var ret = wasm.__wbg_get_vec3f_x(this.ptr);
+        return ret;
+    }
+    /**
+    * @param {number} arg0
+    */
+    set x(arg0) {
+        wasm.__wbg_set_vec3f_x(this.ptr, arg0);
+    }
+    /**
+    */
+    get y() {
+        var ret = wasm.__wbg_get_vec3f_y(this.ptr);
+        return ret;
+    }
+    /**
+    * @param {number} arg0
+    */
+    set y(arg0) {
+        wasm.__wbg_set_vec3f_y(this.ptr, arg0);
+    }
+    /**
+    */
+    get z() {
+        var ret = wasm.__wbg_get_vec3f_z(this.ptr);
+        return ret;
+    }
+    /**
+    * @param {number} arg0
+    */
+    set z(arg0) {
+        wasm.__wbg_set_vec3f_z(this.ptr, arg0);
+    }
+    /**
+    * @returns {Vec3f}
+    */
+    static default() {
+        var ret = wasm.vec3f_default();
+        return Vec3f.__wrap(ret);
+    }
+    /**
     * @param {number} x
     * @param {number} y
     * @param {number} z
@@ -183,6 +383,69 @@ export class Vec3f {
     */
     static new(x, y, z) {
         var ret = wasm.vec3f_new(x, y, z);
+        return Vec3f.__wrap(ret);
+    }
+    /**
+    * @returns {number}
+    */
+    magnitude() {
+        var ret = wasm.vec3f_magnitude(this.ptr);
+        return ret;
+    }
+    /**
+    * @param {Vec3f} target
+    * @returns {number}
+    */
+    dist(target) {
+        _assertClass(target, Vec3f);
+        var ptr0 = target.ptr;
+        target.ptr = 0;
+        var ret = wasm.vec3f_dist(this.ptr, ptr0);
+        return ret;
+    }
+    /**
+    * @returns {Vec3f}
+    */
+    normalize() {
+        var ret = wasm.vec3f_normalize(this.ptr);
+        return Vec3f.__wrap(ret);
+    }
+    /**
+    * @param {number} c
+    * @returns {Vec3f}
+    */
+    scalar_multiply(c) {
+        var ret = wasm.vec3f_scalar_multiply(this.ptr, c);
+        return Vec3f.__wrap(ret);
+    }
+    /**
+    * @param {number} c
+    * @returns {Vec3f}
+    */
+    scalar_divide(c) {
+        var ret = wasm.vec3f_scalar_divide(this.ptr, c);
+        return Vec3f.__wrap(ret);
+    }
+    /**
+    * @param {Vec3f} other
+    * @returns {Vec3f}
+    */
+    add(other) {
+        _assertClass(other, Vec3f);
+        var ptr0 = other.ptr;
+        other.ptr = 0;
+        var ret = wasm.vec3f_add(this.ptr, ptr0);
+        return Vec3f.__wrap(ret);
+    }
+    /**
+    * @param {Vec3f} other
+    * @returns {Vec3f}
+    */
+    sub(other) {
+        _assertClass(other, Vec3f);
+        var ptr0 = other.ptr;
+        other.ptr = 0;
+        var ret = wasm.vec3f_sub(this.ptr, ptr0);
         return Vec3f.__wrap(ret);
     }
 }
