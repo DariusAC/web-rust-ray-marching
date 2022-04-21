@@ -68,10 +68,10 @@ export var add_body, energyChart;
 	       	m));
 	}
 
-	add_body(0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.4, 6000.0);
+	add_body(0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.4, 4000.0);
 	add_body(0.0, 1.3, 5.0, 0.9115, 0.0, 0.0, 0.2, 15.0);
 	add_body(0.0, -1.5, 5.0, -0.9115, 0.0, 0.0, 0.3, 30.0);
-	add_body(1.7, 0.0, 5.0, 0.0, 0.9115, 0.0, 0.2, 20.0);
+	//add_body(1.7, 0.0, 5.0, 0.0, 0.9115, 0.0, 0.2, 20.0);
 
 	out = document.getElementById("out");
 	data = document.getElementById("data");
