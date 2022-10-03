@@ -21,7 +21,7 @@ export var add_body, energyChart;
       var output;
       var settings;
       var chartUpdateFreq = 40;
-      var maxPnts = 200;
+      var maxPnts = 80;
       var updateCounter = 0;
       var startingData = {
           labels: [0, chartUpdateFreq*1, chartUpdateFreq*2, chartUpdateFreq*3, chartUpdateFreq*4, chartUpdateFreq*5, chartUpdateFreq*6, chartUpdateFreq*7, chartUpdateFreq*8, chartUpdateFreq*9, chartUpdateFreq*10, chartUpdateFreq*11, chartUpdateFreq*12, chartUpdateFreq*13, chartUpdateFreq*14, chartUpdateFreq*15, chartUpdateFreq*16, chartUpdateFreq*17],
