@@ -56,6 +56,11 @@ energyChart = new Chart(ctx, {
 energyChart.options.animation = false;
 // Importing WASM as a JS module requires us to call an init function provided by the default export.
 // This is planned to be changed in the future.
+
+energyChart.data.datasets[0].label = "Potential Energy";
+energyChart.data.datasets[1].label = "Kinteic Energy";
+energyChart.data.datasets[2].label = "Total Energy";
+
 import {
     default as wasm,
     Body,
